@@ -1,6 +1,6 @@
 # README
 
-# <ここにアプリ名を入力>
+# Comic introducer
 
 ## サイト概要
 ### サイトテーマ
