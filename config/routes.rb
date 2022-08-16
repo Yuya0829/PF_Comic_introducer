@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  scope module: :public do
+    resources :post_images
+  end
+
   root to: "homes#top"
   get "homes/about" => "homes#about", as: "about"
 
