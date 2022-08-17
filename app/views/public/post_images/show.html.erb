@@ -1,16 +1,49 @@
-<div>
-  <%= image_tag @post_image.get_image, size:"400x300" %>
-  <p>タイトル：<%= @post_image.comic_name %></p>
-  <p>説明：<%= @post_image.caption %></p>
-  <p>投稿ユーザー画像：<%= image_tag 'no_image.jpeg' %></p>
-  <p>ユーザーネーム：<%= @post_image.user.name %></p>
-  <p>投稿日：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
+<div class="container">
+ <h2>コミック詳細</h2>
+ <br>
+ <br>
+ <br>
 
-   <% if @post_image.user == current_user %>
-     <p><%= link_to "編集", edit_post_image_path(@post_image.id), class: "btn btn-success", method: :get %></p>
-   <% end %>
+ <div class="row">
+  <div class="col-lg-3"><%= image_tag @post_image.get_image, size:"400x300" %></div>
 
-   <% if @post_image.user == current_user %>
-     <p><%= link_to "削除", post_image_path(@post_image), class: "btn btn-danger", method: :delete %></p>
-   <% end %>
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+      <table class="table-borderless table-condensed">
+        <tr>
+          <td>タイトル</td>
+          <td><%= @post_image.comic_name %></td>
+        </tr>
+
+        <tr>
+          <td>説明</td>
+          <td><%= @post_image.caption %></td>
+        </tr>
+
+        <tr>
+          <td>投稿ユーザー画像　</td>
+          <td><%= image_tag 'no_image.jpeg' %></td>
+        </tr>
+
+        <tr>
+          <td>ユーザーネーム</td>
+          <td><%= @post_image.user.name %></td>
+        </tr>
+
+         <tr>
+          <td>投稿日</td>
+          <td><%= @post_image.created_at.strftime('%Y/%m/%d') %></p></td>
+        </tr>
+      </table>
+
+      <br>
+        <% if @post_image.user == current_user %>
+         <td><%= link_to "編集", edit_post_image_path(@post_image.id), class: "btn btn-success", method: :get %></td>
+        <% end %>
+
+        <% if @post_image.user == current_user %>
+         <td><%= link_to "削除", post_image_path(@post_image), class: "btn btn-danger", method: :delete %></td>
+        <% end %>
+
+    </div>
+  </div>
 </div>
