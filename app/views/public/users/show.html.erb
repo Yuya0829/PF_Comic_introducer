@@ -1,0 +1,20 @@
+<div class="profile-container">
+  <h3 class="profile-name"><%= @user.name %></h3>
+   <%#= image_tag @user.get_profile_image(100,100) %>
+   <% if @user.id == current_user.id %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+   <% end %>
+</div>
+
+<% @post_images.each do |post_image| %>
+<div>
+  <%= link_to post_image_path(post_image.id) do %>
+    <%= image_tag post_image.get_image, size:"150x100" %>
+  <% end %>
+
+  <p>タイトル：<%= post_image.comic_name %></p>
+  <p>概要：<%= post_image.caption %></p>
+</div>
+<% end %>
+
+<%= paginate @post_images %>

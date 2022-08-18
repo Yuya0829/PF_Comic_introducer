@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :post_images
+    resources :users, only: [:show, :edit, :update, :destroy]
   end
 
   root to: "homes#top"
