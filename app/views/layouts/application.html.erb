@@ -12,25 +12,64 @@
 
   <body>
     <header>
-      <% if user_signed_in? %>
-        <li>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        </li>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand">
+            <span>Comic Introducer</span>
+            <i class="fa-solid fa-book-open-cover"></i>
+          </a>
 
-        <li>
-          <%= link_to 'マイページ', user_path(current_user.id) %>
-        </li>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        　</button>
+        　<div class="navbar-collapse collapse show" id="navbarNavDropdown">
+        　<ul class="navbar-nav ml-auto">
 
-      <% else %>
-        <li>
-          <%= link_to "新規登録", new_user_registration_path %>
-        </li>
+          <% if user_signed_in? %>
 
-        <li>
-          <%= link_to "ログイン", new_user_session_path %>
-        </li>
-      <% end %>
+            <li>
+              <%= link_to post_images_path, class:"nav-link text-light" do %>
+              　コミック一覧
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to user_path(current_user.id), class:"nav-link text-light" do %>
+                マイページ
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do %>
+                ログアウト
+              <% end %>
+            </li>
+
+          <% else %>
+            <li>
+              <%= link_to "新規登録", new_user_registration_path %>
+            </li>
+
+            <li>
+              <%= link_to "ログイン", new_user_session_path %>
+            </li>
+          <% end %>
+          </div>
+        </div>
+      </nav>
     </header>
+
     <%= yield %>
+
+     <footer class="bg-dark text-white pt-5 pb-4">
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <p>あなたのおすすめマンがを紹介</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
   </body>
 </html>
