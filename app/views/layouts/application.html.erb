@@ -28,8 +28,14 @@
           <% if user_signed_in? %>
 
             <li>
+              <%= link_to new_post_image_path, class:"nav-link text-light" do %>
+                新規投稿
+              <% end %>
+            </li>
+
+            <li>
               <%= link_to post_images_path, class:"nav-link text-light" do %>
-              　コミック一覧
+                コミック一覧
               <% end %>
             </li>
 
@@ -46,14 +52,21 @@
             </li>
 
           <% else %>
+
             <li>
-              <%= link_to "新規登録", new_user_registration_path %>
+              <%= link_to new_user_registration_path, class:"nav-link text-light" do %>
+                新規登録
+              <% end %>
             </li>
 
             <li>
-              <%= link_to "ログイン", new_user_session_path %>
+              <%= link_to new_user_session_path, class:"nav-link text-light" do %>
+                ログイン
+              <% end %>
             </li>
+
           <% end %>
+
           </div>
         </div>
       </nav>
@@ -61,6 +74,7 @@
 
     <%= yield %>
 
+     <br>
      <footer class="bg-dark text-white pt-5 pb-4">
       <div class="container">
         <div class="row no-gutters">
