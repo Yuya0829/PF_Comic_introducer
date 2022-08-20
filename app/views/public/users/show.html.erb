@@ -7,7 +7,7 @@
     <div class="col-lg-2">
       <div class="profile-container">
         <h3 class="profile-name"><%= @user.name %></h3>
-          <%= image_tag @user.get_default_profile_image, class:"rounded-circle";  %>
+          <%= image_tag @user.get_default_profile_image, size:"150x130", class:"rounded-circle";  %>
           <% if @user.id == current_user.id %>
            <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-success" %></p>
           <% end %>
@@ -20,7 +20,7 @@
         <% @post_images.each do |post_image| %>
         <div class="mr-3">
           <%= link_to post_image_path(post_image.id) do %>
-            <%= image_tag post_image.get_image, size:"150x100" %>
+            <%= image_tag post_image.get_image, size:"120x150" %>
           <% end %>
 
           <p>タイトル：<%= post_image.comic_name %></p>
