@@ -16,7 +16,7 @@
         <div class="container">
           <a class="navbar-brand">
             <span>Comic Introducer</span>
-            <i class="fa-solid fa-book-open-cover"></i>
+            <i class="fas fa-book-reader"></i>
           </a>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,24 +29,28 @@
 
             <li>
               <%= link_to new_post_image_path, class:"nav-link text-light" do %>
+              <i class="fas fa-plus-circle"></i>
                 新規投稿
               <% end %>
             </li>
 
             <li>
               <%= link_to post_images_path, class:"nav-link text-light" do %>
+              <i class="fas fa-book-open"></i>
                 コミック一覧
               <% end %>
             </li>
 
             <li>
               <%= link_to user_path(current_user.id), class:"nav-link text-light" do %>
+              <i class="fas fa-user"></i>
                 マイページ
               <% end %>
             </li>
 
             <li>
               <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do %>
+              <i class="fas fa-sign-out-alt"></i>
                 ログアウト
               <% end %>
             </li>
@@ -55,18 +59,21 @@
 
             <li>
               <%= link_to post_images_path, class:"nav-link text-light" do %>
+              <i class="fas fa-book-open"></i>
                 コミック一覧
               <% end %>
             </li>
 
             <li>
               <%= link_to new_user_registration_path, class:"nav-link text-light" do %>
+              <i class="fas fa-user-plus"></i>
                 新規登録
               <% end %>
             </li>
 
             <li>
               <%= link_to new_user_session_path, class:"nav-link text-light" do %>
+              <i class="fas fa-sign-in-alt"></i>
                 ログイン
               <% end %>
             </li>
