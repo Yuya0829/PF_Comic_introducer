@@ -25,14 +25,37 @@
         　<div class="navbar-collapse collapse show" id="navbarNavDropdown">
         　<ul class="navbar-nav ml-auto">
 
-          <% if user_signed_in? %>
+          <% if admin_signed_in? %>
 
-            <li>
-              <%= link_to new_post_image_path, class:"nav-link text-light" do %>
-              <i class="fas fa-plus-circle"></i>
-                新規投稿
+             <li>
+              <%= link_to post_images_path, class:"nav-link text-light" do %>
+              <i class="fas fa-book-open"></i>
+                コミック一覧
               <% end %>
-            </li>
+             </li>
+
+              <li>
+               <%= link_to post_images_path,class:"nav-link text-light" do %>
+               <i class="fas fa-users"></i>
+                ユーザー
+               <% end %>
+          　   </li>
+
+              <li>
+               <%= link_to post_images_path,class:"nav-link text-light" do %>
+               <i class="fab fa-battle-net"></i>
+                 ジャンル
+               <% end %>
+              </li>
+
+              <li>
+               <%= link_to destroy_admin_session_path,class:"nav-link text-light", method: :delete do %>
+               <i class="fas fa-sign-out-alt"></i>
+                 ログアウト
+               <% end %>
+              </li>
+
+          <% elsif user_signed_in? %>
 
             <li>
               <%= link_to post_images_path, class:"nav-link text-light" do %>

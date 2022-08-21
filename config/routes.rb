@@ -20,5 +20,9 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update, :destroy]
   end
 
+   namespace :admin do
+    get '/' => 'homes#top'
+  end
+
 
 end
