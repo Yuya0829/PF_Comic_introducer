@@ -36,11 +36,11 @@
       </table>
 
       <br>
-        <% if @post_image.user == current_user %>
+        <% if @post_image.user == current_user || admin_signed_in? %>
          <td><%= link_to "編集", edit_post_image_path(@post_image.id), class: "btn btn-success", method: :get %></td>
         <% end %>
 
-        <% if @post_image.user == current_user %>
+        <% if @post_image.user == current_user || admin_signed_in? %>
          <td><%= link_to "削除", post_image_path(@post_image), class: "btn btn-danger", method: :delete %></td>
         <% end %>
 
