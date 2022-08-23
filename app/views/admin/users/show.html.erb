@@ -1,2 +1,37 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="container">
+  <br>
+  <h1><%= @user.name %>さんの詳細</h1>
+  <br>
+
+  <div class="row">
+    <div class="col-lg-2">
+      <div class="profile-container">
+        <h3 class="profile-name"><%= @user.name %></h3>
+          <%= image_tag @user.get_default_profile_image, size:"150x130", class:"rounded-circle";  %>
+           <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-success" %></p>
+      </div>
+    </div>
+
+    <div class="col-lg-10">
+      <h2><b>投稿コミック一覧</b></h2>
+      <div class="row">
+        <% @post_images.each do |post_image| %>
+        <div class="mr-3">
+          <%= link_to post_image_path(post_image.id) do %>
+            <%= image_tag post_image.get_image, size:"120x150" %>
+          <% end %>
+
+          <p>タイトル：<%= post_image.comic_name %></p>
+          <p>概要：<%= post_image.caption %></p>
+          <p><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %></p>
+        </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-mr-auto">
+     <%= paginate @post_images %>
+    </div>
+
+  </div>
+</div>

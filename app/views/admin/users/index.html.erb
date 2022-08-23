@@ -8,6 +8,7 @@
       <tr>
         <th>会員ID</th>
         <th>ユーザーネーム</th>
+        <th></th>
         <th>メールアドレス</th>
       </tr>
     </thead>
@@ -17,6 +18,7 @@
       <tr>
         <td><%= user.id %></td>
         <td><%= link_to user.name, admin_user_path(user.id) %></td>
+        <td><%= image_tag user.get_default_profile_image, size:"60x60", class:"rounded-circle";  %></td>
         <td><%= user.email %></td>
       </tr>
       <% end %>

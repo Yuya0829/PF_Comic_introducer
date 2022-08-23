@@ -8,7 +8,7 @@
       <div class="profile-container">
         <h3 class="profile-name"><%= @user.name %></h3>
           <%= image_tag @user.get_default_profile_image, size:"150x130", class:"rounded-circle";  %>
-          <% if @user.id == current_user.id %>
+          <% if @user.id == current_user.id || admin_signed_in? %>
            <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-success" %></p>
           <% end %>
       </div>
