@@ -4,6 +4,9 @@ class PostImage < ApplicationRecord
 
   belongs_to :user
 
+  has_many :post_image_genres
+  has_many :genres, through: :post_image_genres, dependent: :destroy
+
   has_many :post_comments, dependent: :destroy
 
   def get_image
