@@ -2,6 +2,14 @@
  <div class="row">
   <div class="mx-auto col-12 col-sm-10 col-lg-12 col-xl-4">
    <h1>投稿フォーム</h1>
+   <% if @post_image.errors.any? %>
+    　<%= @post_image.errors.count %>errors prohibited this obj from being saved:
+      <ul>
+      <% @post_image.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+      </ul>
+    <% end %>
 
     <%= form_with model: @post_image do |f| %>
 
@@ -18,6 +26,22 @@
         <%= f.text_area :caption %>
 
       <%= f.submit '投稿' %>
+
+      <div class="form-group row" id="star">
+        <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
+        <%= f.hidden_field :star, id: :review_star %>
+　　　</div>
+
+      <script>
+　　　　$('#star').empty();
+        $('#star').raty({
+          size     : 36,
+          starOff:  "<%= asset_path('star-off.png') %>",
+          starOn : "<%= asset_path('star-on.png') %>",
+        　scoreName: 'post_image[star]',
+          half: false,
+        });
+     </script>
 
     <% end %>
   </div>

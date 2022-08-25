@@ -10,10 +10,11 @@ class Public::PostImagesController < ApplicationController
     @post_image.user_id = current_user.id
     @post_image.genres << Genre.find(params[:post_image][:genre_id])
     if @post_image.save
-      redirect_to post_images_path
+       flash[:notice] = "Comic was successfully created."
+       redirect_to post_images_path
     else
-      @genres = Genre.all
-      render :new
+       @genres = Genre.all
+       render :new
     end
   end
 
@@ -63,7 +64,7 @@ class Public::PostImagesController < ApplicationController
   private
 
   def post_image_params
-    params.require(:post_image).permit(:comic_name, :image, :caption, :genre_id)
+    params.require(:post_image).permit(:comic_name, :image, :caption, :genre_id, :star)
   end
 
 end

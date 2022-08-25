@@ -62,7 +62,21 @@
             <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
             <%= f.submit "送信する" %>
           <% end %>
-     </div>
+      </div>
+
+      <div id="star-rate<%= @post_image.id %>">
+         <script>
+          $('#star-rate<%= @post_image.id %>').empty();
+          $('#star-rate<%= @post_image.id%>').raty({
+             size      : 36,
+             starOff   : '<%= asset_path('star-off.png') %>',
+             starOn    : '<%= asset_path('star-on.png') %>',
+             half      : false,
+             readOnly: true,
+             score: <%= @post_image.star %>,
+           });
+         </script>
+      </div>
 
     </div>
   </div>
