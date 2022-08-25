@@ -18,7 +18,12 @@ class Public::PostImagesController < ApplicationController
   end
 
   def index
-    @post_images = PostImage.page(params[:page]).per(8)
+    if params[:genre]
+      @post_images = PostImage.where(genre_id: params[:genre]).page(params[:page]).per(8)
+    else
+      @post_images = PostImage.page(params[:page]).per(8)
+    end
+
     @genres = Genre.all
   end
 
