@@ -90,7 +90,14 @@
           　<li>
               <%= link_to root_path, class:"nav-link text-light" do %>
               <i class="fas fa-home"></i>
-                TOP
+                Top
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to about_path, class:"nav-link text-light" do %>
+              <i class="fas fa-info-circle"></i>
+                Information
               <% end %>
             </li>
 
@@ -129,7 +136,11 @@
       <div class="container">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <p>あなたのおすすめマンがを紹介</p>
+            <p>
+              <i class="fas fa-book-open"></i>
+              あなたのおすすめマンがを紹介
+              <i class="fas fa-book-open"></i>
+            </p>
           </div>
         </div>
       </div>
