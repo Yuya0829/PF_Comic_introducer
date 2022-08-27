@@ -33,7 +33,7 @@
             <p></p>
             <p><%= image_tag post_image.user.get_default_profile_image, size:"80x70", class:"rounded-circle";  %></p>
             <p>タイトル：<%= post_image.comic_name %></p>
-            <p>ジャンル : <%= post_image.genres.first.name %></p>
+            <p>ジャンル : <%= post_image.genre.name %></p>
             <p>概要：<%= post_image.caption %></p>
             <p>ユーザーネーム：<%= post_image.user.name %></p>
             <div id="star-rate<%= post_image.id %>">

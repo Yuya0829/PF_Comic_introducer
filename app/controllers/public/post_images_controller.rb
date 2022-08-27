@@ -1,6 +1,6 @@
 class Public::PostImagesController < ApplicationController
 
-before_action :authenticate_user!, except: [:show, :index]
+#before_action :authenticate_user!, except: [:show, :index]
 
   def new
     @post_image = PostImage.new
@@ -10,7 +10,6 @@ before_action :authenticate_user!, except: [:show, :index]
   def create
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
-    @post_image.genres << Genre.find(params[:post_image][:genre_id])
     if @post_image.save
        flash[:notice] = "Comic was successfully created."
        redirect_to post_images_path
@@ -26,7 +25,6 @@ before_action :authenticate_user!, except: [:show, :index]
     else
       @post_images = PostImage.page(params[:page]).per(8)
     end
-
     @genres = Genre.all
   end
 

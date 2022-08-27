@@ -2,15 +2,16 @@ class PostImage < ApplicationRecord
 
   validates :image, presence: true
   validates :comic_name, presence: true
-  validates :user_id, presence: true
+  validates :caption, presence: true
   validates :genre_id, presence: true
+  validates :star, presence: true
+
 
   has_one_attached :image
 
   belongs_to :user
 
-  has_many :post_image_genres
-  has_many :genres, through: :post_image_genres, dependent: :destroy
+  belongs_to :genre
 
   has_many :post_comments, dependent: :destroy
 
