@@ -1,6 +1,6 @@
 class Public::PostImagesController < ApplicationController
 
-#before_action :authenticate_user!, except: [:show, :index]
+before_action :authenticate_user!, except: [:show, :index]
 
   def new
     @post_image = PostImage.new
@@ -22,6 +22,8 @@ class Public::PostImagesController < ApplicationController
   def index
     if params[:genre]
       @post_images = PostImage.where(genre_id: params[:genre]).page(params[:page]).per(8)
+    elsif params[:keyword].present?
+      @post_images = PostImage.where(comic_name: params[:keyword]).page(params[:page]).per(8)
     else
       @post_images = PostImage.page(params[:page]).per(8)
     end
@@ -61,10 +63,11 @@ class Public::PostImagesController < ApplicationController
     redirect_to post_images_path
   end
 
+
   private
 
   def post_image_params
-    params.require(:post_image).permit(:comic_name, :image, :caption, :genre_id, :star)
+    params.require(:post_image).permit(:comic_name, :image, :caption, :genre_id, :star, :keyword)
   end
 
 end

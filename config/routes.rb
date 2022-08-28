@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get "homes/about" => "homes#about", as: "about"
 
+
   devise_for :users,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -17,7 +18,12 @@ Rails.application.routes.draw do
     resources :post_images do
     resources :post_comments, only: [:create, :destroy]
     end
-    resources :users, only: [:show, :edit, :update, :destroy]
+
+    get 'users/unsubscribe' => 'users#unsubscribe', as: 'confirm_unsubscribe'
+    patch 'withdraw' => 'users#withdraw', as: 'withdraw_users'
+    put 'withdraw' => 'users#withdraw'
+    resources :users
+
   end
 
    namespace :admin do

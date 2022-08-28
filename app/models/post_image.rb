@@ -23,4 +23,8 @@ class PostImage < ApplicationRecord
     image
   end
 
+  def self.search(keyword)
+     where(["comic_name like? OR caption like?", "%#{keyword}%", "%#{keyword}%"])
+  end
+
 end

@@ -22,6 +22,15 @@
 
     <div class="col-lg-10">
       <h2><b>コミック一覧</b></h2>
+
+      <div class="search-form">
+        <%= form_with url: post_images_path, method: :get, local: true do |f| %>
+          <%= f.text_field :keyword, value: @keyword %>
+          <%= f.submit "検索" %>
+        <% end %>
+      </div>
+      <br>
+
       <div class="row">
 
         <% @post_images.each do |post_image| %>
