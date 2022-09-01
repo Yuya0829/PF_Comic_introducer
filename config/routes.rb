@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :post_images do
     resources :post_comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
     end
 
     get 'users/unsubscribe' => 'users#unsubscribe', as: 'confirm_unsubscribe'

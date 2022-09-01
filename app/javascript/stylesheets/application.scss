@@ -1,14 +1,11 @@
 
-
-
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 .b-ground{
  width: 100%;
  height: 100%;
- background-image: url("../images/back_ground_image_design.jpg");
+ background-image: url("../images/bg_img2.jpg");
  background-size: cover;
  background-repeat: no-repeat;
-//  background-image: url(<%= asset_path 'back_ground_image_design.jpeg' %>);
  }

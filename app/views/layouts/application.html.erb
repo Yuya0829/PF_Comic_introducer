@@ -10,6 +10,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <% if flash[:notice] %>
+    <p id="notice">
+      <%= flash[:notice] %>
+    </p>
+  <% end %>
+
   <body>
     <div class="b-ground">
 
@@ -140,7 +146,7 @@
           <div class="col-md-4">
             <p>
               <i class="fas fa-book-open"></i>
-              あなたのおすすめマンがを紹介
+              あなたのおすすめマンガを紹介
               <i class="fas fa-book-open"></i>
             </p>
           </div>
