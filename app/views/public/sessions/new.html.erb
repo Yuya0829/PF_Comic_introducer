@@ -36,6 +36,9 @@
               <td></td>
               <td><%= f.submit 'ログイン',class:"btn btn-success" %></td>
             </div>
+            <div>
+              <%= link_to "ゲストログイン(閲覧用)", users_guest_sign_in_path, class:"btn btn-warning btn-sm btn-block sign_up", method: :post %>
+            </div>
           </tr>
         </tbody>
       </table>
