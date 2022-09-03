@@ -21,14 +21,24 @@ class Public::UsersController < ApplicationController
   end
 
   def unsubscribe
-    @user = current_user
+    if current_user
+      @user = current_user
+    elsif admin_signed_in?
+      @user = User.find(params[:user_id])
+    end
   end
 
   def withdraw
-    @user = current_user
-    @user.update(is_deleted: true)
-    reset_session
-    redirect_to "/"
+    if current_user
+      @user = current_user
+      @user.update(is_deleted: true)
+      reset_session
+      redirect_to "/"
+    elsif admin_signed_in?
+      @user = User.find(params[:user_id])
+      @user.update(is_deleted: true)
+      redirect_to admin_users_path
+    end
   end
 
 

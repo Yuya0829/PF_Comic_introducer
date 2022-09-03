@@ -4,7 +4,7 @@
   <br>
 
   <div class="row">
-    <div class="col-lg-2">
+    <div class="col-lg-3">
       <div class="profile-container">
         <h3 class="profile-name"><%= @user.name %></h3>
           <%= image_tag @user.get_default_profile_image, size:"150x130", class:"rounded-circle";  %>
@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div class="col-lg-10">
+    <div class="col-lg-9">
       <h2><b>投稿コミック一覧</b></h2>
       <div class="row">
         <% @post_images.each do |post_image| %>

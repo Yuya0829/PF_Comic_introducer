@@ -9,8 +9,13 @@
     </div>
 
 　　　<br>
-      <div><%= link_to "退会しない", user_path(@user.id), class: "btn btn-primary" %>
-           <%= link_to "退会する", withdraw_users_path, class: "btn btn-danger", method: :patch, data: { confirm: '退会しますか？' } %>
+      <div>
+        <% if current_user %>
+          <%= link_to "退会しない", user_path(@user.id), class: "btn btn-primary" %>
+        <% elsif admin_signed_in? %>
+          <%= link_to "退会させない", admin_users_path, class: "btn btn-primary" %>
+        <% end %>
+        <%= link_to "退会する", withdraw_users_path(user_id: @user.id), class: "btn btn-danger", method: :patch, data: { confirm: '退会しますか？' } %>
       </div>
 
     </div>

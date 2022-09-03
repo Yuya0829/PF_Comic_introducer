@@ -1,21 +1,30 @@
 class Public::PostImagesController < ApplicationController
 
-before_action :authenticate_user!, except: [:show, :index]
+#before_action :authenticate_user!, except: [:show, :index]
+
 
   def new
-    @post_image = PostImage.new
-    @genres = Genre.all
+    if current_user
+      @post_image = PostImage.new
+      @genres = Genre.all
+    else
+     render :index
+    end
   end
 
   def create
-    @post_image = PostImage.new(post_image_params)
-    @post_image.user_id = current_user.id
-    if @post_image.save
-       flash[:notice] = "Comic was successfully created."
-       redirect_to post_images_path
+    if current_user
+      @post_image = PostImage.new(post_image_params)
+      @post_image.user_id = current_user.id
+        if @post_image.save
+           flash[:notice] = "Comic was successfully created."
+           redirect_to post_images_path
+        else
+           @genres = Genre.all
+           render :new
+        end
     else
-       @genres = Genre.all
-       render :new
+      render :index
     end
   end
 
@@ -47,7 +56,8 @@ before_action :authenticate_user!, except: [:show, :index]
 
   def update
     @post_image = PostImage.find(params[:id])
-    if@post_image.save
+    if@post_image.user_id =  admin_signed_in? || current_user.id
+      @post_image.update(post_image_params)
       flash[:notice] = "You have updated comic successfully."
       redirect_to post_image_path(@post_image.id)
     else
@@ -58,8 +68,13 @@ before_action :authenticate_user!, except: [:show, :index]
 
   def destroy
     @post_image = PostImage.find(params[:id])
-    @post_image.destroy
-    redirect_to post_images_path
+    if@post_image.user_id = admin_signed_in? || current_user.id
+      @post_image = PostImage.find(params[:id])
+      @post_image.destroy
+      redirect_to post_images_path
+    else
+      render :show
+    end
   end
 
 
