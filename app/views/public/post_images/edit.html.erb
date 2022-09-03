@@ -1,13 +1,21 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+    <div class="col-lg-3">
+      <%= image_tag @post_image.get_image, size:"300x400" %>
+    </div>
+
+    <div class="col-sm-9 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h1>編集</h1>
       <%= form_with model: @post_image, url: post_image_path(@post_image.id) do |f| %>
+
+      <h4>画像</h4>
+      <%= f.file_field :image, placeholder: "画像", accept: "image/*" %>
 
       <h4>タイトル</h4>
       <%= f.text_field :comic_name, class: "form-control" %>
 
-      <h4>説明</h4>
+      <h4>概要</h4>
       <%= f.text_area :caption, class: "form-control" %>
 
       <p><%= f.submit '更新', class: "btn btn-success" %></p>
