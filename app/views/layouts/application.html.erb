@@ -16,6 +16,13 @@
     </p>
   <% end %>
 
+  <% if current_user && (current_user.email == "guest@test.com") %>
+   <p class="text-center">
+     <strong>ゲストユーザーとしてログイン中</strong><br>
+     ※投稿内容等のデータは残るため、個人情報等の入力は禁止
+    </p>
+  <% end %>
+
   <body>
     <div class="b-ground">
 
@@ -64,6 +71,13 @@
               </li>
 
           <% elsif user_signed_in? %>
+
+            <li>
+              <%= link_to about_path, class:"nav-link text-light" do %>
+              <i class="fas fa-info-circle"></i>
+                Information
+              <% end %>
+            </li>
 
             <li>
               <%= link_to new_post_image_path, class:"nav-link text-light" do %>

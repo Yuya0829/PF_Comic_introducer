@@ -47,7 +47,6 @@ before_action :authenticate_user!, except: [:show, :index]
 
   def update
     @post_image = PostImage.find(params[:id])
-    @post_image.update(post_image_params)
     if@post_image.save
       flash[:notice] = "You have updated comic successfully."
       redirect_to post_image_path(@post_image.id)
