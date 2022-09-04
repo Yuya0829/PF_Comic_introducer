@@ -32,6 +32,9 @@ class Public::UsersController < ApplicationController
     if current_user
       @user = current_user
       @user.update(is_deleted: true)
+      @user.favorites.destroy_all
+      @user.post_comments.destroy_all
+      @user.post_images.destroy_all
       reset_session
       redirect_to "/"
     elsif admin_signed_in?
