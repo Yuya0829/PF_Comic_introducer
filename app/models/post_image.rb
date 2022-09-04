@@ -30,7 +30,7 @@ class PostImage < ApplicationRecord
   end
 
   def favorited_by?(user)
-    favorites.exists?
+    favorites.exists?(user_id: user.id)
   end
 
 end

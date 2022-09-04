@@ -48,6 +48,8 @@
         <% if @post_image.user == current_user || admin_signed_in? %>
          <td><%= link_to "削除", post_image_path(@post_image), class: "btn btn-danger", method: :delete %></td>
         <% end %>
+
+　　　<% if current_user %>
       <div>
         <% if @post_image.favorited_by?(current_user) %>
           <p>
@@ -55,7 +57,9 @@
               ♥<%= @post_image.favorites.count %> いいね
             <% end %>
           </p>
+
         <% else %>
+
           <p>
             <%= link_to post_image_favorites_path(@post_image), method: :post do %>
               ♡<%= @post_image.favorites.count %> いいね
@@ -63,13 +67,16 @@
           </p>
         <% end %>
       </div>
+      <% end %>
 
+      <% if current_user %>
       <div>
           <%= form_with model: [@post_image, @post_comment] do |f| %>
             <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
             <%= f.submit "送信する" %>
           <% end %>
       </div>
+      <% end %>
 
       <div id="star-rate<%= @post_image.id %>">
          <script>
