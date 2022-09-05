@@ -19,11 +19,11 @@ class Admin::GenresController < ApplicationController
   end
 
   def edit
-    @genre = Genre.find(params[:id])
+    @genre = Genre.find_by(id: params[:id])
   end
 
   def update
-    @genre = Genre.find(params[:id])
+    @genre = Genre.find_by(id: params[:id])
     if @genre.update(genre_params)
       flash[:notice] = "Genre was successfully updated."
       redirect_to admin_genres_path
@@ -33,7 +33,7 @@ class Admin::GenresController < ApplicationController
   end
 
   def destroy
-    @genre = Genre.find(params[:id])
+    @genre = Genre.find_by(id: params[:id])
     @genre.destroy
     redirect_to admin_genres_path
   end

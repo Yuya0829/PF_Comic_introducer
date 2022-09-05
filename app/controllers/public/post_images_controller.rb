@@ -1,8 +1,5 @@
 class Public::PostImagesController < ApplicationController
 
-#before_action :authenticate_user!, except: [:show, :index]
-
-
   def new
     if current_user
       @post_image = PostImage.new
@@ -40,13 +37,13 @@ class Public::PostImagesController < ApplicationController
   end
 
   def show
-    @post_image = PostImage.find(params[:id])
+    @post_image = PostImage.find_by(id: params[:id])
     @post_comment = PostComment.new
     @post_comments = @post_image.post_comments.page(params[:page]).per(2)
   end
 
   def edit
-    @post_image = PostImage.find(params[:id])
+    @post_image = PostImage.find_by(id: params[:id])
     if@post_image.user == current_user || admin_signed_in?
       render :edit
     else
@@ -56,7 +53,7 @@ class Public::PostImagesController < ApplicationController
   end
 
   def update
-    @post_image = PostImage.find(params[:id])
+    @post_image = PostImage.find_by(id: params[:id])
     if@post_image.user_id =  admin_signed_in? || current_user.id
       @post_image.update(post_image_params)
       flash[:notice] = "You have updated comic successfully."
@@ -68,9 +65,9 @@ class Public::PostImagesController < ApplicationController
   end
 
   def destroy
-    @post_image = PostImage.find(params[:id])
+    @post_image = PostImage.find_by(id: params[:id])
     if@post_image.user_id = admin_signed_in? || current_user.id
-      @post_image = PostImage.find(params[:id])
+      @post_image = PostImage.find_by(id: params[:id])
       @post_image.destroy
       redirect_to post_images_path
     else

@@ -7,7 +7,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
     @post_images = @user.post_images.page(params[:page]).per(6)
   end
 
