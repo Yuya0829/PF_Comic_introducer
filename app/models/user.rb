@@ -25,7 +25,7 @@ class User < ApplicationRecord
   end
 
   def self.guest
-    find_or_create_by!(email: 'guest@test.com') do |user|
+    find_or_create_by!(email: 'guest@guest.com', name: 'ゲストユーザー') do |user|
       user.password = SecureRandom.urlsafe_base64
     end
   end

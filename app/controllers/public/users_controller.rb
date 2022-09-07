@@ -40,6 +40,9 @@ class Public::UsersController < ApplicationController
     elsif admin_signed_in?
       @user = User.find_by(id: params[:user_id])
       @user.update(is_deleted: true)
+      @user.favorites.destroy_all
+      @user.post_comments.destroy_all
+      @user.post_images.destroy_all
       redirect_to admin_users_path
     end
   end

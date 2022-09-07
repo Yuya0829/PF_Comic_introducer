@@ -31,7 +31,7 @@ class Public::PostImagesController < ApplicationController
     elsif params[:keyword].present?
       @post_images = PostImage.where(comic_name: params[:keyword]).page(params[:page]).per(8)
     else
-      @post_images = PostImage.page(params[:page]).per(8)
+      @post_images = PostImage.page(params[:page]).per(8).order('created_at DESC')
     end
     @genres = Genre.all
   end
