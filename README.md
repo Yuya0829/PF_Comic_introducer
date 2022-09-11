@@ -1,4 +1,4 @@
-# Comic introducer
+# Comic Introducer
 
 ## サイト概要
 ### サイトテーマ
