@@ -7,7 +7,9 @@
         <strong>Comic Introducer!!</strong>
       </h1>
 
-      <p><img class="image" src="/assets/comic_image.wbp"style= "height: 400px; width: 530px;"></p>
+      <p>
+        <%= image_tag 'comic_image.wbp', size: '530x400', class: 'image' %>
+      </p>
 
       <p><%= link_to "ログイン",new_user_session_path, class:"btn btn-primary btn-sm btn-block mb-3 sign_up" %></p>
 
