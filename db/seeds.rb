@@ -45,7 +45,7 @@ end
     {comic_name: '新宿スワン', caption: '歌舞伎町スカウトサバイバル', user_id: 8, genre_id: 8, star: '2', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/underground_seed.jpg"), filename:"underground_seed.jpg")},
     {comic_name: 'アオハライド', caption: '学園恋愛ストーリー', user_id: 4, genre_id: 4, star: '3', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/love_seed.jpg"), filename:"love_seed.jpg")},
     {comic_name: 'DEATH NOTE', caption: '心理戦スリルサスペンス', user_id: 2, genre_id: 2, star: '4', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/suspense_seed.jpg"), filename:"suspense_seed.jpg")},
-    {comic_name: 'SLAM DUNK', caption: 'バスケマンガの金字塔', user_id: 3, genre_id: 3, star: '5', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/sports_seed.jpg"), filename:"sports_seed.jpg")},
+    {comic_name: 'SLAM DUNK', caption: 'バスケマンガの金字塔', user_id: 3, genre_id: 3, star: '4', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/sports_seed.jpg"), filename:"sports_seed.jpg")},
     {comic_name: 'ワンピース', caption: '海賊冒険ロマン', user_id: 1, genre_id: 1, star: '5', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/battle_seed.jpg"), filename:"battle_seed.jpg")},
   ]
 )
