@@ -10,7 +10,7 @@ Admin.find_or_create_by(email: 'z@z') do |admin|
   admin.password = 'zzzzzz'
 end
 
-users = User.create!(
+ User.create!(
   [
     {email: 'james@test.com', name: 'James', password: 'password', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/user_seed_1.jpg"), filename:"user_seed_1.jpg")},
     {email: 'lucas@test.com', name: 'Lucas', password: 'password', profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/user_seed_2.jpg"), filename:"user_seed_2.jpg")},
@@ -23,7 +23,7 @@ users = User.create!(
   ]
 )
 
-genres = Genre.create!(
+ Genre.create!(
   [
     {name: 'バトル'},
     {name: 'サスペンス'},
@@ -37,7 +37,7 @@ genres = Genre.create!(
   ]
 )
 
-post_image = PostImage.create!(
+ PostImage.create!(
   [
     {comic_name: '鋼の錬金術師', caption: '錬金術バトルファンタジー', user_id: 5, genre_id: 5, star: '4', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/fantasy_seed.jpg"), filename:"fantasy_seed.jpg")},
     {comic_name: 'カラダ探し', caption: '学園スリルホラー', user_id: 6, genre_id: 6, star: '1', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/horror_seed.jpg"), filename:"horror_seed.jpg")},
