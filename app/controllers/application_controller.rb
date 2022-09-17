@@ -16,4 +16,11 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
 
+  private
+  def authenticate_user_or_admin
+    if current_user.nil? && current_admin.nil?
+      redirect_to user_session_path
+    end
+  end
+
 end
