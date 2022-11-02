@@ -29,6 +29,7 @@
 - OS：Linux2(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby
 - フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
 - IDE：Cloud9
 
 ## 規約
